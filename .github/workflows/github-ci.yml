@@ -1,0 +1,36 @@
+# NHipster ci-cd
+name: Application CI
+on: [push, pull_request]
+jobs:
+    pipeline:
+        name: Cuckcuku pipeline
+        runs-on: ubuntu-latest
+        if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]') && !contains(github.event.pull_request.title, '[skip ci]') && !contains(github.event.pull_request.title, '[ci skip]')"
+        timeout-minutes: 40
+        env:
+            NODE_VERSION: 14.16.0
+            JHI_DISABLE_WEBPACK_LOGS: true
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: 14.16.0
+            - name: Stop MySQL server
+              run: sudo /etc/init.d/mysql stop
+            - name: Install node.js packages
+              run: npm install
+            - name: Run backend test
+              run: |
+                  npm install
+                  npm run test
+              working-directory: server
+               }
+              if (!skipClient) {             - name: Run frontend test
+              run: npm run test-ci
+            - name: Package application
+              run:  cd server && npm run build
+           # - name: Deploy to Heroku
+           #   if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+           #   env:
+           #       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+           #   run: ./mvnw -ntp com.heroku.sdk:heroku-maven-plugin:2.0.5:deploy -DskipTests -Pprod -Dheroku.buildpacks=heroku/jvm -Dheroku.appName=cuckcuku
