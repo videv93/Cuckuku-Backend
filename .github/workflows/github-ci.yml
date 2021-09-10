@@ -19,9 +19,9 @@ jobs:
               run: sudo /etc/init.d/mysql stop
             - name: Install node.js packages
               run: npm install
+              working-directory: server
             - name: Run backend test
               run: npm install | npm run test
-              working-directory: server
             - name: Run frontend test
               run: npm run test-ci
             - name: Package application
