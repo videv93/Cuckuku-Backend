@@ -23,9 +23,7 @@ jobs:
               run: npm install | npm run test
               working-directory: server
             - name: Run frontend test
-              if (!skipClient) {
-                run: npm run test-ci
-              }
+              run: npm run test-ci
             - name: Package application
               run:  cd server && npm run build
            # - name: Deploy to Heroku
