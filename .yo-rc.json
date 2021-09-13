@@ -51,6 +51,9 @@
     "reactive": false,
     "languages": ["en", "fr"],
     "lastLiquibaseTimestamp": 1631501212000,
-    "entities": ["Post"]
+    "entities": ["Post"],
+    "herokuAppName": "cuckcuku",
+    "herokuDeployType": "git",
+    "herokuJavaVersion": "1.8"
   }
 }
