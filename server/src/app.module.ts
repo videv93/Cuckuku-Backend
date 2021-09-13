@@ -4,6 +4,7 @@ import { AuthModule } from './module/auth.module';
 import { ormConfig } from './orm.config';
 import { config } from './config';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { PostModule } from './module/post.module';
 // jhipster-needle-add-entity-module-to-main-import - JHipster will import entity modules here, do not remove
 // jhipster-needle-add-controller-module-to-main-import - JHipster will import controller modules here, do not remove
 // jhipster-needle-add-service-module-to-main-import - JHipster will import service modules here, do not remove
@@ -15,6 +16,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
             rootPath: config.getClientPath(),
         }),
         AuthModule,
+        PostModule,
         // jhipster-needle-add-entity-module-to-main - JHipster will add entity modules here, do not remove
     ],
     controllers: [

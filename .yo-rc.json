@@ -49,6 +49,8 @@
     "buildTool": "maven",
     "enableHibernateCache": true,
     "reactive": false,
-    "languages": ["en", "fr"]
+    "languages": ["en", "fr"],
+    "lastLiquibaseTimestamp": 1631501212000,
+    "entities": ["Post"]
   }
 }

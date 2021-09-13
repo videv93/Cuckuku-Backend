@@ -3,6 +3,5 @@ services:
   cuckcuku-app:
     build: ../../..
     container_name: cuckcuku-app
-    environment:
     ports:
       - 8081:8081
